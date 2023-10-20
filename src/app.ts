@@ -24,6 +24,7 @@ import ExpressionInfo from "@arcgis/core/form/ExpressionInfo";
 import Search from "@arcgis/core/widgets/Search";
 import Home from "@arcgis/core/widgets/Home";
 import LayerList from "@arcgis/core/widgets/LayerList";
+import Expand from "@arcgis/core/widgets/Expand";
 
 import { when } from "@arcgis/core/core/reactiveUtils";
 import { Chart, registerables } from "chart.js";
@@ -173,7 +174,7 @@ const districtsLabelLayer = new FeatureLayer({
   },
   labelingInfo: [
     {
-      labelExpression: "[nam]",
+      labelExpression: "[name]",
       symbol: new LabelSymbol3D({
         symbolLayers: [
           new TextSymbol3DLayer({
@@ -304,7 +305,12 @@ const layerList = new LayerList({
     }
   },
 });
-view.ui.add(layerList, "top-right");
+const llExpand = new Expand({
+  view: view,
+  content: layerList,
+  expanded: false
+})
+view.ui.add(llExpand, "top-right");
 
 /**************************************************
  * Step 8 - Add a chart that shows the distribution of the streets by gender *
