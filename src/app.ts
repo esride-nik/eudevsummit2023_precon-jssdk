@@ -279,7 +279,7 @@ streetsLayer.popupTemplate = new PopupTemplate({
     "<p><strong>{name}</strong></p><p>{expression/title}: {expression/description}</p><p><a href='{expression/link}'>Learn more</a></p><p>",
   expressionInfos: arcadeExpressionInfos.map(
     (infos) => new ExpressionInfo(infos)
-  ),
+  ) as __esri.popupExpressionInfoProperties[],
 });
 
 /**************************************************
@@ -308,8 +308,8 @@ const layerList = new LayerList({
 const llExpand = new Expand({
   view: view,
   content: layerList,
-  expanded: false
-})
+  expanded: false,
+});
 view.ui.add(llExpand, "top-right");
 
 /**************************************************
